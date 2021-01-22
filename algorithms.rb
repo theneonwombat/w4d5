@@ -58,7 +58,7 @@ def largest_contiguous_subsum(list)
 end
 
 
-p largest_contiguous_subsum(other_list1)
+# p largest_contiguous_subsum(other_list1)
 
 # Keep a running tally of the largest sum. 
 # To accomplish this efficient space complexity, consider using two variables. 
@@ -67,16 +67,15 @@ p largest_contiguous_subsum(other_list1)
 
 def largest_contiguous_subsum2(other_list)
   largest = other_list.first
-  other_list.inject do |current, ele|
-    # debugger
+  other_list.inject(0) do |current, ele|
     current = current + ele
+
     if current > largest
       largest = current
+    elsif current < 0
+
+      0
     else
-      what = current - largest
-      if what > largest
-        largest = what
-      end
       current
     end
   end
